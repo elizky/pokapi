@@ -1,0 +1,430 @@
+/* VARIABLES */
+:root{
+    --clr-blue: #263238;
+    --clr-red: #ef5350;
+    --clr-red-sec: #c62828;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+}
+header{
+    background:url('https://cdn.dribbble.com/users/813012/screenshots/2872715/attachments/592899/pokemon-template-poke-stop-test.gif');
+    background-size: cover;
+    height: 15vh;
+    display: flex;
+}
+body{
+    background-color: var(--clr-blue);
+}
+h1{
+    color: white;
+    text-align: center;
+    background-color:var(--clr-red);
+    width: 19%;
+    margin: auto;
+}
+h2{
+    color:var(--clr-red);
+    text-align: center;
+    margin: 2% 0;
+    font-size: 1.3rem;
+}
+h4{
+    margin-bottom: 2%;
+}
+h6{
+    text-align: center;
+    font-size: 40px;
+    color:var(--clr-red-sec);
+    background: white;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+p{
+    font-size: 12px;
+    margin-bottom: 4%;
+}
+
+li{
+    list-style-type: none;
+    line-height: 2;
+    text-align: center;
+}
+button{
+    cursor: pointer;
+    background-color:var(--clr-red);
+    border: none;
+    margin: 16px 0;
+    padding: 0 16px;
+    font-size: 16px;
+    color: white;
+    border-radius: 1em;
+    line-height: 2;
+    transition: all .5s ease-in-out;
+}
+button:hover{
+    color:white;
+    background-color:var(--clr-red-sec);
+}
+/* 
+div{
+    display: flex;
+    justify-content: space-around;
+} */
+
+
+.buscador{
+    display: flex;
+    margin-bottom: 1%;
+}
+
+.contenedor-main{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: auto;
+}
+
+.negrita{
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* POKEMON */
+.card-characters{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 20rem;
+    padding: 1.5% 1%;
+    margin: 1%;
+    background: whitesmoke;
+    border-radius: 10px;
+}
+.card-characters img{
+    height: 13rem;
+    background-color: #ffffff69;
+    border-radius: 50%;
+}
+.container-data{
+    display: flex;
+    margin: 1% 0;
+    align-items: baseline;
+    justify-content: space-between;
+}
+.container-data h3{
+    padding: 0 10px;
+    font-size: 1.2rem;
+    color: #a9a7a7;
+}
+.container-tipo{
+    display: flex;
+    padding: 1em;
+    margin: 1% 0;
+}
+.container-tipo p{
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    margin: 0;
+}
+.container-mov{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1% 0;
+}
+.movimientos{
+    flex-direction: column;
+    width: 50%;
+}
+.movimiento{
+    flex-direction: column;
+    padding: 5%;
+    margin: 5%;
+    background-color: #ffffff69;
+    border-radius: 15%;
+}
+.movimiento h2{
+    /* font-size: 1.5rem; */
+    font-size: 100%;
+    font-family: 'VT323', monospace;
+    margin-bottom: 5px;
+    width: 100%;
+    border-radius: 0;
+    font-weight: 400;
+}
+.movimiento p{
+    text-align: center;
+}
+.movimiento ul{
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.movimiento li{
+    text-align: left;
+    font-family: 'VT323', monospace;
+    font-size: 1.2em;
+}
+.container-footer{
+    display: flex;
+    justify-content: space-around;
+    margin: 1% 0;
+}
+
+
+
+
+/*--------------------BOTONES--------------------*/
+.group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 45%;
+}
+.inputs{
+    display: flex;
+    flex-wrap: wrap;
+}
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+label {
+    color: white;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    position: relative;
+    margin-right: 1em;
+    padding-left: 2em;
+    padding-right: 1em;
+    line-height: 2;
+    cursor: pointer;
+}
+label:before {
+    box-sizing: border-box;
+    content: " ";
+    position: absolute;
+    left: 0;
+    display: block;
+    z-index: -1;
+}
+input[type="radio"] + label::before {
+    border-radius: 1em;
+}
+/* Checked */
+input[type="radio"]:checked + label {
+    padding-left: 1em;
+    color: var(--clr-red);
+}
+input[type="radio"]:checked + label:before {
+    top: 0;
+    width: 100%;
+    height: 2em;
+    background: white;
+}
+/* Transition */
+label,
+label::before {
+    -webkit-transition: .25s all ease;
+    -o-transition: .25s all ease;
+    transition: .25s all ease;
+}
+
+
+
+/* SELECT */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #2c3e50;
+    background-image: none;
+  }
+  
+  select::-ms-expand {
+    display: none;
+  }
+  .select {
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    line-height: 3;
+    background: #2c3e50;
+    overflow: hidden;
+    border-radius: .25em;
+  }
+  
+  select {
+    flex: 1;
+    padding: 0 .5em;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #fff;
+    cursor: pointer;
+  }
+  /* Arrow */
+  .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #34495e;
+    cursor: pointer;
+    pointer-events: none;
+    -webkit-transition: .25s all ease;
+    -o-transition: .25s all ease;
+    transition: .25s all ease;
+  }
+  /* Transition */
+  .select:hover::after {
+    color: #c62828;
+  }
+  
+
+/*--------------------TIPOS--------------------*/
+
+.normal,.fighting,.flying,.poison,
+.ground,.rock,.bug,.ghost,.steel,
+.fire,.water,.grass,.electric,.psychic,
+.ice,.dragon,.dark,.fairy,.unknown,.shadow{
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    color: white;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    margin: auto;
+    padding: 2%;
+    box-shadow: 1px 2px 3px 0px #0000004f;
+}
+
+.fire{background-color:#e78137;}
+.normal{background-color:#a2a671;}
+.water{background-color:#6187ab;}
+.ground{background-color:#dbc170;}
+.dragon{background-color:#713de6;}
+.dark{background-color:#705543;}
+.ice{background-color:#9ad5d4;}
+.grass{background-color:#80c46a;}
+.fairy{background-color:#dea0da;}
+.flying{background-color:#a591e3;}
+.fighting{background-color:#b2312b;}
+.bug{background-color:#a5ba16;}
+.steel{background-color:#b8b7d2;}
+.electric{background-color:#f3d245;}
+.poison{background-color:#954991;}
+.ghost{background-color:#6f578b;}
+.psychic{background-color:#e75f89;}
+.rock{background-color: #a98a2e;}
+
+
+
+
+
+/* -----MEDIA QUERYS----- */
+
+
+@media only screen and (max-width: 1100px) {
+    .group{
+        flex-wrap: wrap;
+        font-size: 14px;
+    }
+}
+
+
+@media only screen and (max-width: 900px) {
+    h2{
+        font-size: 1rem;
+    }
+    h6{
+        font-size: 30px;
+    }
+    li{
+        font-size: 14px;
+    }
+    .text{
+        font-size: 9px;
+    }
+    .card-creators{
+        width: 40%;
+    }
+    .container-comic h2{
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    h6{
+        letter-spacing: 5px;
+    }
+    label{
+        font-weight: 400;
+        margin-right: 0;
+    }
+    .text{
+        font-size: 8px;
+    }
+    .card-creators{
+        width: 40%;
+    }
+}
+@media only screen and (max-width: 630px) {
+    h6{
+        letter-spacing: 5px;
+    }
+    label{
+        padding-left: 1em;
+        padding-right: 0.5em;
+    }
+
+    .card-creators{
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    h6{
+        font-size: 22px;
+    }
+    .card-comics{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 20rem;
+        padding: 1.5% 1%;
+        margin: 2%;
+        background: whitesmoke;
+        border-radius: 10px;
+    }
+    .card-comics h2{
+        margin: 2% 0;
+    }
+    .card-comics .container-foto{
+        width: 100%;
+    }
+
+    .container-comic{
+        width: 100%;
+    }
+    .text{
+        font-size: 12px;
+    }
+}
+
+
