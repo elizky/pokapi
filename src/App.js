@@ -6,14 +6,16 @@ import PokemonProvider from './context/PokemonContext'
 
 
 
+
+
 function App() {
   return (
     <CategoriasProvider>
       <PokemonProvider>
-        <Fragment>
-          <Header />
-          <Main />
-        </Fragment>
+          <Fragment>
+            <Header />
+            <Main />
+          </Fragment>
       </PokemonProvider>
     </CategoriasProvider>
 

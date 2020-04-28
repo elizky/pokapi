@@ -80,6 +80,7 @@ div{
 
 .buscador{
     display: flex;
+    justify-content: space-around;
     margin-bottom: 1%;
 }
 
@@ -111,6 +112,10 @@ div{
     height: 13rem;
     background-color: #ffffff69;
     border-radius: 50%;
+}
+.container-foto{
+    display: flex;
+    justify-content: center;
 }
 .container-data{
     display: flex;
@@ -190,6 +195,7 @@ div{
 }
 .inputs{
     display: flex;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 input[type="radio"] {

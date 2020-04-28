@@ -11,8 +11,7 @@ const PokemonProvider = (props) => {
     })
     const [consultar, guardarConsultar] = useState(false)
 
-
-    const { region, tipo } = busqueda
+    const { region} = busqueda
     let pokeid = Math.floor((Math.random() * region) + 1);
 
 

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+
 import PkmHeader from './pokemon/PkmHeader'
 import PkmFoto from './pokemon/PkmFoto'
 import PkmTipo from './pokemon/PkmTipo'

@@ -1,12 +1,11 @@
 import React, { useContext } from 'react'
-import Pokemon from './Pokemon'
 import { PokemonContext } from '../context/PokemonContext'
+import Pokemon from './Pokemon'
 
 
 const ListaPokemon = () => {
 
     const { pokemon } = useContext(PokemonContext)
-    console.log(pokemon)
 
     return (
         <div className="card-characters" id={pokemon.id} >
