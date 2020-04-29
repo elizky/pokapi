@@ -11,6 +11,8 @@ const PkmMov = ({ pokemon }) => {
         movArray.push(movimiento)
     }
     console.log(movArray)
+
+    
     return (
         <div className="container-mov">
             <Movimiento movimiento={movArray[0]}/>

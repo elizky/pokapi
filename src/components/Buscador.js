@@ -10,7 +10,7 @@ const Buscador = () => {
     })
 
     const{categorias}=useContext(CategoriasContext)
-    const {buscarPokemon, guardarConsultar} = useContext(PokemonContext)
+    const {buscarPokemon, guardarConsultar, guardarBuscaRegion, guardarBuscaTipo} = useContext(PokemonContext)
 
     //leer contenido
     const obtenerDatosBusqueda = e => {
@@ -44,7 +44,9 @@ const Buscador = () => {
                     <button onClick = {e =>{
                         e.preventDefault();
                         buscarPokemon(busqueda);
-                        guardarConsultar(true)
+                        guardarConsultar(true);
+                        guardarBuscaRegion(true);
+                        guardarBuscaTipo(false);
                     }}
                     >Buscar</button>
                 </div>
@@ -53,7 +55,7 @@ const Buscador = () => {
                 <div className="group">
                     <h2>Buscar por tipo</h2>
                     <div className="select">
-                        <select id="tipo" name="tipo" onChange={obtenerDatosBusqueda} disabled>
+                        <select id="tipo" name="tipo" onChange={obtenerDatosBusqueda}>
                         {categorias.map(categoria => (
                             <option 
                                 key={categoria.name} 
@@ -62,7 +64,13 @@ const Buscador = () => {
                         ))}
                         </select>
                     </div>
-                    <button disabled>Buscar</button>
+                    <button onClick = {e =>{
+                        e.preventDefault();
+                        buscarPokemon(busqueda);
+                        guardarConsultar(true);
+                        guardarBuscaTipo(true);
+                        guardarBuscaRegion(false);
+                    }}>Buscar</button>
                 </div>
             </div>
         </Fragment>
