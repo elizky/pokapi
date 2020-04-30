@@ -10,7 +10,7 @@ const PokemonProvider = (props) => {
     const [buscaRegion, guardarBuscaRegion] = useState(false)
     const [buscaTipo, guardarBuscaTipo] = useState(false)
 
-    console.log(busqueda) //no borra del state cuando se selecciona una y no la otra. Tendría que ser o región o tipo
+    // console.log(busqueda) //no borra del state cuando se selecciona una y no la otra. Tendría que ser o región o tipo
 
     const { region, tipo } = busqueda
 

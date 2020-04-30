@@ -4,33 +4,37 @@ export const MovimientoContext = createContext()
 
 const MovimientoProvider = (props) => {
 
+
+    const [movimientos, guardarMovimientos] = useState([])
     const [movimiento, guardarMovimiento] = useState([])
+    const [mov, guardarMov] = useState({})
 
-    const [consultar, guardarConsultar] = useState(false)
 
-    console.log(movimiento)
-
+    console.log('movimientos', movimientos)
+    // console.log('movimiento', movimiento)
+    // console.log('mov Obj',mov)
     useEffect(() => {
-        if (consultar) {
+        if (movimientos.length > 0) {
             const obtenerMovimiento = async () => {
                 const url = `https://pokeapi.co/api/v2/move/${movimiento}`
                 const resultado = await axios.get(url)
                 console.log(resultado.data)
-                guardarMovimiento(resultado.data)
+                guardarMov(resultado.data)
             }
             obtenerMovimiento()
         }
-    })
-
+    }, [movimiento])
 
     return (
         <MovimientoContext.Provider
             value={{
+                mov,
+                movimientos,
                 movimiento,
+                guardarMovimientos,
                 guardarMovimiento,
-                guardarConsultar
-            }}
-        >
+                guardarMov
+            }}>
             {props.children}
         </MovimientoContext.Provider>
     );

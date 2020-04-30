@@ -13,6 +13,7 @@ const Main = () => {
                 <h6> Base de Datos de Pokemon</h6>
                 <Buscador />
                 <div id="contenido" className="contenedor-main">
+                    {/* Si el array esta vacio (como al principio) no muestra nada */}
                     {pokemon.length !== 0 ? <ListaPokemon /> : null} 
                 </div>
             </main>

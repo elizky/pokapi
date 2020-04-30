@@ -1,24 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { MovimientoContext } from '../../context/MovimientoContext'
 import Movimiento from './Movimiento'
 
-const PkmMov = ({ pokemon }) => {
+const PkmMov = ({ movs }) => {
 
-    let movimientos = pokemon.moves
-    let movArray = []
-    for (let i = 0; i < 4; i++) {
-        let movimientoRandom = movimientos[Math.floor(Math.random() * movimientos.length)];
-        let movimiento = movimientoRandom.move.name
-        movArray.push(movimiento)
+    const { movimientos, guardarMovimientos } = useContext(MovimientoContext)
+
+    //guardo en el context los 4 movimientos que me traigo por parametro
+    if (movimientos.length === 0) {
+        guardarMovimientos(movs)
     }
-    console.log(movArray)
 
-    
+
     return (
+        //por cada movimiento genero un componente nuevo
         <div className="container-mov">
-            <Movimiento movimiento={movArray[0]}/>
-            <Movimiento movimiento={movArray[1]}/>
-            <Movimiento movimiento={movArray[2]}/>
-            <Movimiento movimiento={movArray[3]}/>
+            {movimientos.map(movimiento => (
+                <Movimiento key={movimiento} value={movimiento}/>
+            ))}
         </div>
     );
 }

@@ -1,35 +1,32 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useContext} from 'react'
+import { MovimientoContext } from '../../context/MovimientoContext'
 
 
 
+const Movimiento = ({ value }) => {
 
-const Movimiento = ({movimiento}) => {
+    const { mov, guardarMovimiento } = useContext(MovimientoContext)
+    guardarMovimiento(value)
 
-    const [mov , guardarMovimiento] = useState(movimiento)
-
+    console.log('MOV', mov)
+    console.log('MOVLENGTH', Object.entries(mov).length)
     
-    useEffect(() => {
-            const obtenerMovimiento = async () => {
-                const url = `https://pokeapi.co/api/v2/move/${movimiento}`
-                const resultado = await axios.get(url)
-                console.log(resultado.data)
-                guardarMovimiento(resultado.data)
-            }
-            obtenerMovimiento()
-    },[])
-
-    console.log(movimiento)
 
     return (
-        <div className="movimientos" id={movimiento}>
-            {/* <div >
-                <h2 className={movimiento.type.name} >{movimiento.name}</h2>
-            </div> */}
-            {/* <ul>
-                <li className="poder"> {movimiento.power} PW</li>
-                <li className="accuracy"> {movimiento.accuracy} % </li>
-            </ul> */}
+
+        <div className="movimientos" id={value}>
+            {Object.entries(mov).length > 22 ?
+
+                <div className='movimiento'>
+                    <div >
+                        <h2 className={mov.type.name} >{mov.name}</h2>
+                    </div>
+                    <ul>
+                        <li className="poder"> {mov.power} PW</li>
+                        <li className="accuracy"> {mov.accuracy} % </li>
+                    </ul>
+                </div> : null}
+
         </div>
 
     );
