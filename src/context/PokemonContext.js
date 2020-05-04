@@ -5,14 +5,15 @@ export const PokemonContext = createContext()
 const PokemonProvider = (props) => {
 
     const [pokemon, guardarPokemon] = useState([])
-    const [busqueda, buscarPokemon] = useState({ region: '', tipo: '' })
+    const [busqueda, buscarPokemon] = useState({ region: '', nombre: '', tipo: '' })
     const [consultar, guardarConsultar] = useState(false)
     const [buscaRegion, guardarBuscaRegion] = useState(false)
     const [buscaTipo, guardarBuscaTipo] = useState(false)
+    const [buscaNombre, guardarBuscaNombre] = useState(false)
 
     // console.log(busqueda) //no borra del state cuando se selecciona una y no la otra. Tendría que ser o región o tipo
 
-    const { region, tipo } = busqueda
+    const { region, nombre, tipo } = busqueda
 
     let pokeid = Math.floor((Math.random() * region) + 1);
 
@@ -22,9 +23,28 @@ const PokemonProvider = (props) => {
             //buscarRegion es true
             if (buscaRegion) {
                 const obtenerPokemon = async () => {
-                    const url = `https://pokeapi.co/api/v2/pokemon/${pokeid}`
-                    const resultado = await axios.get(url)
-                    guardarPokemon(resultado.data)
+                    try {
+                        const url = `https://pokeapi.co/api/v2/pokemon/${pokeid}`
+                        const resultado = await axios.get(url)
+                        guardarPokemon(resultado.data)
+                    } catch (error) {
+                        console.log(error)
+                    }
+                }
+                obtenerPokemon()
+            }
+            //buscarNombre es true
+            if (buscaNombre) {
+                const obtenerPokemon = async () => {
+                    try {
+                        const url = `https://pokeapi.co/api/v2/pokemon/${nombre}`
+                        const resultado = await axios.get(url)
+                        guardarPokemon(resultado.data)
+                    } catch (error) {
+                        alert(`Escribe bien el nombre. Has escrito ${nombre}`)
+                        console.log(error)
+                    }
+
                 }
                 obtenerPokemon()
             }
@@ -57,7 +77,8 @@ const PokemonProvider = (props) => {
                 buscarPokemon,
                 guardarConsultar,
                 guardarBuscaRegion,
-                guardarBuscaTipo
+                guardarBuscaTipo,
+                guardarBuscaNombre
             }}
         >
             {props.children}

@@ -6,11 +6,12 @@ const Buscador = () => {
 
     const [busqueda, guardarBusqueda] = useState({
         region: '',
+        nombre: '',
         tipo: ''
     })
 
     const { categorias } = useContext(CategoriasContext)
-    const { buscarPokemon, guardarConsultar, guardarBuscaRegion, guardarBuscaTipo } = useContext(PokemonContext)
+    const { buscarPokemon, guardarConsultar, guardarBuscaRegion, guardarBuscaTipo, guardarBuscaNombre } = useContext(PokemonContext)
 
     //leer contenido
     const obtenerDatosBusqueda = e => {
@@ -20,10 +21,12 @@ const Buscador = () => {
         })
     }
 
+    console.log(busqueda)
+
     return (
         <Fragment>
             <div className="buscador">
-                
+
                 <div className="group">
                     <h2>Buscar por region</h2>
                     <div className="inputs">
@@ -47,11 +50,36 @@ const Buscador = () => {
                         buscarPokemon(busqueda);
                         guardarConsultar(true);
                         guardarBuscaRegion(true);
+                        guardarBuscaNombre(false);
                         guardarBuscaTipo(false);
                     }}
                     >Buscar</button>
                 </div>
+                <div className="group">
+                    <h2>Buscar por Nombre</h2>
+                    <div className="text">
+                        <label className="field a-field a-field_a1">
+                            <input
+                                className="field__input a-field__input"
+                                type="text"
+                                id="nombre"
+                                name="nombre"
+                                placeholder="e.g. Charmander"
+                                onChange={obtenerDatosBusqueda}
+                            >
+                            </input>
+                        </label>
+                    </div>
+                    <button onClick={e => {
+                        e.preventDefault();
+                        buscarPokemon(busqueda);
+                        guardarConsultar(true);
+                        guardarBuscaTipo(false);
+                        guardarBuscaNombre(true);
+                        guardarBuscaRegion(false);
+                    }}>Buscar</button>
 
+                </div>
                 <div className="group">
                     <h2>Buscar por tipo</h2>
                     <div className="select">
@@ -70,6 +98,7 @@ const Buscador = () => {
                         buscarPokemon(busqueda);
                         guardarConsultar(true);
                         guardarBuscaTipo(true);
+                        guardarBuscaNombre(false);
                         guardarBuscaRegion(false);
                     }}>Buscar</button>
                 </div>
