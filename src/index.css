@@ -71,12 +71,6 @@ button:hover{
     color:white;
     background-color:var(--clr-red-sec);
 }
-/* 
-div{
-    display: flex;
-    justify-content: space-around;
-} */
-
 
 .buscador{
     display: flex;
@@ -130,6 +124,7 @@ div{
 }
 .container-tipo{
     display: flex;
+    justify-content: space-around;
     padding: 1em;
     margin: 1% 0;
 }
@@ -146,6 +141,8 @@ div{
 .movimientos{
     flex-direction: column;
     width: 50%;
+    justify-content: space-around;
+    display: flex;
 }
 .movimiento{
     flex-direction: column;
