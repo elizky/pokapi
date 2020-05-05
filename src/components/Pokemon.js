@@ -16,14 +16,14 @@ const Pokemon = ({ pokemon }) => {
     
     function generarMovsRandom(cantidad, array) {
         const copiaArray = Array.from(array); 
-        return movArray = Array.from(Array(cantidad), () => copiaArray.splice(Math.floor(copiaArray.length * Math.random()), 1)[0]);
+        movArray = Array.from(Array(cantidad), () => copiaArray.splice(Math.floor(copiaArray.length * Math.random()), 1)[0]);
     }
     useEffect(() => {
         generarMovsRandom(4, pokemon.moves)
         if (movArray.length > 0) {
             guardarMovimientos(movArray)
         }
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
@@ -33,7 +33,7 @@ const Pokemon = ({ pokemon }) => {
             <PkmFoto pokemon={pokemon} />
             <PkmTipo pokemon={pokemon} />
             <PkmMov />
-            <PkmFooter pokemon={pokemon} />
+            <PkmFooter pokemon={pokemon} generarMovsRandom={generarMovsRandom} />
         </Fragment>
 
     );

@@ -5,28 +5,23 @@ import { PokemonContext } from '../context/PokemonContext'
 const Buscador = () => {
 
     const [busqueda, guardarBusqueda] = useState({
-        region: '',
-        nombre: '',
-        tipo: ''
     })
 
     const { categorias } = useContext(CategoriasContext)
-    const { buscarPokemon, guardarConsultar, guardarBuscaRegion, guardarBuscaTipo, guardarBuscaNombre } = useContext(PokemonContext)
+    const { buscarPokemon, guardarConsultar } = useContext(PokemonContext)
 
     //leer contenido
     const obtenerDatosBusqueda = e => {
         guardarBusqueda({
-            ...busqueda, //copiamos el state original
-            [e.target.name]: e.target.value
+            // ...busqueda, //copiamos el state original para guardar mas busquedas (al pedo porque no se relacionan)
+            [e.target.name]: e.target.value.toLowerCase()
         })
     }
-
-    console.log(busqueda)
 
     return (
         <Fragment>
             <div className="buscador">
-
+                {/* RADIO */}
                 <div className="group">
                     <h2>Buscar por region</h2>
                     <div className="inputs">
@@ -45,16 +40,8 @@ const Buscador = () => {
                         <input type="radio" name="region" id="rb7" value="807" onChange={obtenerDatosBusqueda} />
                         <label htmlFor="rb7">Alola</label>
                     </div>
-                    <button onClick={e => {
-                        e.preventDefault();
-                        buscarPokemon(busqueda);
-                        guardarConsultar(true);
-                        guardarBuscaRegion(true);
-                        guardarBuscaNombre(false);
-                        guardarBuscaTipo(false);
-                    }}
-                    >Buscar</button>
                 </div>
+                {/* TEXT */}
                 <div className="group">
                     <h2>Buscar por Nombre</h2>
                     <div className="text">
@@ -70,20 +57,23 @@ const Buscador = () => {
                             </input>
                         </label>
                     </div>
-                    <button onClick={e => {
+                    {/* BUTTON */}
+                    <form onSubmit={e => {
                         e.preventDefault();
                         buscarPokemon(busqueda);
                         guardarConsultar(true);
-                        guardarBuscaTipo(false);
-                        guardarBuscaNombre(true);
-                        guardarBuscaRegion(false);
-                    }}>Buscar</button>
-
+                    }}>
+                        <button
+                            type="submit"
+                        >Buscar</button>
+                    </form>
                 </div>
+                {/* OPTION */}
                 <div className="group">
                     <h2>Buscar por tipo</h2>
                     <div className="select">
                         <select id="tipo" name="tipo" onChange={obtenerDatosBusqueda}>
+                            <option value="">--SELECCIONA UN TIPO--</option>
                             {categorias.map(categoria => (
                                 <option
                                     key={categoria.name}
@@ -93,14 +83,7 @@ const Buscador = () => {
                             ))}
                         </select>
                     </div>
-                    <button onClick={e => {
-                        e.preventDefault();
-                        buscarPokemon(busqueda);
-                        guardarConsultar(true);
-                        guardarBuscaTipo(true);
-                        guardarBuscaNombre(false);
-                        guardarBuscaRegion(false);
-                    }}>Buscar</button>
+
                 </div>
             </div>
         </Fragment>

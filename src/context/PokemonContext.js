@@ -5,13 +5,8 @@ export const PokemonContext = createContext()
 const PokemonProvider = (props) => {
 
     const [pokemon, guardarPokemon] = useState([])
-    const [busqueda, buscarPokemon] = useState({ region: '', nombre: '', tipo: '' })
+    const [busqueda, buscarPokemon] = useState({ region: null, nombre: null, tipo: null })
     const [consultar, guardarConsultar] = useState(false)
-    const [buscaRegion, guardarBuscaRegion] = useState(false)
-    const [buscaTipo, guardarBuscaTipo] = useState(false)
-    const [buscaNombre, guardarBuscaNombre] = useState(false)
-
-    // console.log(busqueda) //no borra del state cuando se selecciona una y no la otra. Tendría que ser o región o tipo
 
     const { region, nombre, tipo } = busqueda
 
@@ -21,7 +16,7 @@ const PokemonProvider = (props) => {
     useEffect(() => {
         if (consultar) {
             //buscarRegion es true
-            if (buscaRegion) {
+            if (region) {
                 const obtenerPokemon = async () => {
                     try {
                         const url = `https://pokeapi.co/api/v2/pokemon/${pokeid}`
@@ -34,7 +29,7 @@ const PokemonProvider = (props) => {
                 obtenerPokemon()
             }
             //buscarNombre es true
-            if (buscaNombre) {
+            if (nombre) {
                 const obtenerPokemon = async () => {
                     try {
                         const url = `https://pokeapi.co/api/v2/pokemon/${nombre}`
@@ -49,7 +44,7 @@ const PokemonProvider = (props) => {
                 obtenerPokemon()
             }
             //buscarTipo es true
-            if (buscaTipo) {
+            if (tipo) {
                 const obtenerPokemon = async () => {
                     const url = `https://pokeapi.co/api/v2/type/${tipo}`
                     const resultado = await axios.get(url)
@@ -68,6 +63,7 @@ const PokemonProvider = (props) => {
                 obtenerPokemon()
             }
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [busqueda])
 
     return (
@@ -76,9 +72,6 @@ const PokemonProvider = (props) => {
                 pokemon,
                 buscarPokemon,
                 guardarConsultar,
-                guardarBuscaRegion,
-                guardarBuscaTipo,
-                guardarBuscaNombre
             }}
         >
             {props.children}

@@ -178,6 +178,15 @@ button:hover{
     justify-content: space-around;
     margin: 1% 0;
 }
+.refresh{
+    margin-right: 15px;
+    color: var(--clr-red);
+    transition: all .5s ease-in-out;
+}
+.refresh:hover{
+    cursor: pointer;
+    color: var(--clr-red-sec);
+}
 
 
 
@@ -186,7 +195,6 @@ button:hover{
 .group {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     width: 45%;
 }
@@ -205,8 +213,7 @@ label {
     font-weight: 700;
     letter-spacing: 1.1px;
     position: relative;
-    margin-right: 1em;
-    padding-left: 2em;
+    padding-left: 1em;
     padding-right: 1em;
     line-height: 2;
     cursor: pointer;
@@ -224,7 +231,7 @@ input[type="radio"] + label::before {
 }
 /* Checked */
 input[type="radio"]:checked + label {
-    padding-left: 1em;
+    /* padding-left: 1em; */
     color: var(--clr-red);
 }
 input[type="radio"]:checked + label:before {

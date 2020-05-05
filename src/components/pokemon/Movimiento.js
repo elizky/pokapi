@@ -5,18 +5,19 @@ const Movimiento = ({ value }) => {
 
     const [movimiento, guardarMovimiento] = useState(null)
 
-    useEffect(() => {
-        const obtenerMovimiento = async () => {
-            const url = `https://pokeapi.co/api/v2/move/${value}`
-            try {
-                const resultado = await axios.get(url)
-                console.log(resultado.data)
-                guardarMovimiento(resultado.data)
-            } catch (error) {
-                console.log(error)
-            }
+    const obtenerMovimiento = async () => {
+        const url = `https://pokeapi.co/api/v2/move/${value}`
+        try {
+            const resultado = await axios.get(url)
+            guardarMovimiento(resultado.data)
+        } catch (error) {
+            console.log(error)
         }
+    }
+
+    useEffect(() => {
         obtenerMovimiento()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
